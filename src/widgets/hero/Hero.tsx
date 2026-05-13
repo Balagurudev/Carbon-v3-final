@@ -17,21 +17,7 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-tr from-black via-black/20 to-transparent z-20" />
       </div>
 
-      {/* Stylized Background Arrow Shapes (Replicating the screenshot) */}
-      <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-         <motion.div 
-           initial={{ opacity: 0, rotate: -45, scale: 0.8 }}
-           animate={{ opacity: 0.15, rotate: -45, scale: 1 }}
-           transition={{ duration: 2 }}
-           className="absolute top-[10%] left-[20%] w-[500px] h-[500px] border-[40px] border-primary opacity-20 rounded-[100px] border-r-0 border-b-0"
-         />
-         <motion.div 
-           initial={{ opacity: 0, rotate: 135, scale: 0.8 }}
-           animate={{ opacity: 0.1, rotate: 135, scale: 1 }}
-           transition={{ duration: 2.5, delay: 0.5 }}
-           className="absolute bottom-[5%] right-[10%] w-[400px] h-[400px] border-[30px] border-primary opacity-20 rounded-[80px] border-r-0 border-b-0"
-         />
-      </div>
+
 
       <div className="container mx-auto px-10 md:px-24 relative z-30 pt-20">
         <motion.div
@@ -72,7 +58,7 @@ export const Hero = () => {
            className="w-[380px] bg-white/5 backdrop-blur-3xl rounded-xl p-3 border border-white/10 flex items-center gap-5 group cursor-pointer hover:bg-white/10 transition-all shadow-2xl"
          >
             <div className="w-36 h-24 rounded-lg overflow-hidden shrink-0 relative">
-               <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Recycling" />
+               <img src="/momentum-img.png" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Recycling" />
                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
             </div>
             <div className="flex flex-col justify-between py-1 h-full flex-grow">
