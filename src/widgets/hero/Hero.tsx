@@ -19,20 +19,20 @@ export const Hero = () => {
 
 
 
-      <div className="container mx-auto px-10 md:px-24 relative z-30 pt-20">
+      <div className="container mx-auto px-10 md:px-24 relative z-30 pt-20 flex flex-col items-start">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl"
+          className="w-full flex flex-col items-start"
         >
-          <h1 className="text-5xl md:text-7xl lg:text-[96px] font-semibold text-white leading-[1.1] mb-6 tracking-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-[96px] font-semibold text-white leading-[1.05] mb-8 tracking-tight text-left">
             Gandhinagar is <br />
             going Zero Waste.
           </h1>
           
-          <div className="max-w-lg">
-            <p className="text-sm md:text-[15px] text-white/70 mb-8 leading-relaxed font-normal tracking-normal">
+          <div className="max-w-xl flex flex-col items-start">
+            <p className="text-sm md:text-[16px] text-white/70 mb-10 leading-relaxed font-normal tracking-normal text-left">
               Join the Clean Circle and get free doorstep waste collection across your neighborhood. <br className="hidden md:block" />
               Building a sustainable city for future generations.
             </p>

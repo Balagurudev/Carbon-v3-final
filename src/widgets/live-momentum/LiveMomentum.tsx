@@ -26,7 +26,7 @@ export const LiveMomentum = () => {
            <motion.div
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
-             className="bg-white border border-slate-100 rounded-xl p-10 flex flex-col h-[450px] hover:shadow-xl hover:shadow-slate-100/50 transition-all duration-500"
+             className="bg-white border border-slate-200 rounded-xl p-10 flex flex-col h-[450px] hover:shadow-xl hover:shadow-slate-100/50 transition-all duration-500"
            >
               <div className="flex items-center gap-3 text-secondary mb-12">
                  <Users className="w-5 h-5 text-primary" />
@@ -49,7 +49,7 @@ export const LiveMomentum = () => {
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.1 }}
-             className="bg-white border border-slate-100 rounded-xl p-10 flex flex-col h-[450px] hover:shadow-xl hover:shadow-slate-100/50 transition-all duration-500"
+             className="bg-white border border-slate-200 rounded-xl p-10 flex flex-col h-[450px] hover:shadow-xl hover:shadow-slate-100/50 transition-all duration-500"
            >
               <div className="flex items-center gap-3 text-secondary mb-12">
                  <Building2 className="w-5 h-5 text-primary" />
