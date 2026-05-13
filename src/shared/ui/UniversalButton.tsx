@@ -27,14 +27,14 @@ export const UniversalButton = ({
   const content = (
     <Button 
       className={cn(
-        "group relative flex items-stretch overflow-hidden rounded-full border border-white/10 p-0 transition-all duration-500 shadow-xl",
-        size === "lg" ? "h-14 md:h-16" : "h-10 md:h-12",
+        "group relative flex items-stretch overflow-hidden rounded-full border border-white/10 p-0 transition-all duration-500 shadow-xl hover:shadow-primary/20",
+        size === "lg" ? "h-11 md:h-12" : "h-9 md:h-10",
         variant === "primary" ? "bg-primary text-secondary" : "bg-secondary text-white",
         className
       )}
     >
       <span className={cn(
-        "flex-1 px-8 md:px-10 flex items-center justify-center h-full font-black uppercase tracking-[0.1em] transition-all duration-500 text-center leading-none",
+        "flex-1 px-5 md:px-7 flex items-center justify-center h-full font-semibold uppercase tracking-wider transition-all duration-500 text-center leading-none",
         size === "lg" ? "text-[10px] md:text-[11px]" : "text-[9px]",
         variant === "primary" ? "group-hover:bg-white/10" : "group-hover:bg-primary/10"
       )}>
@@ -46,7 +46,7 @@ export const UniversalButton = ({
       )}>
         <Icon className={cn(
           "transition-transform duration-500 group-hover:rotate-45 group-hover:scale-110",
-          size === "lg" ? "w-4 h-4 md:w-5 md:h-5" : "w-3.5 h-3.5"
+          size === "lg" ? "w-3.5 h-3.5 md:w-4 md:h-4" : "w-3 h-3"
         )} />
       </span>
     </Button>
