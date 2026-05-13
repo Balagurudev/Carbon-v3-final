@@ -20,7 +20,7 @@ export const Footer = () => {
               <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center transition-transform group-hover:rotate-12">
                 <div className="w-5 h-5 bg-secondary rounded-sm rotate-45" />
               </div>
-              <span className="text-2xl font-black text-white tracking-tighter uppercase">Swachh Saathi</span>
+              <span className="text-2xl font-black text-white tracking-tighter uppercase">Swach Saathi</span>
             </div>
             <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em] leading-loose max-w-xs mb-8">
               Transforming Gandhinagar into a model zero-waste city through community-led sustainability and technology.
@@ -43,7 +43,7 @@ export const Footer = () => {
               },
               {
                 title: "Connect",
-                links: ["hello@verden.gnr.in", "1800-CLEAN-CITY", "Privacy Policy"]
+                links: ["hello@swachsaathi.gnr.in", "1800-CLEAN-CITY", "Privacy Policy"]
               }
             ].map((section, idx) => (
               <div key={idx}>
@@ -72,7 +72,7 @@ export const Footer = () => {
                 transition={{ duration: 1.5 }}
                 className="text-[10vw] font-black tracking-tighter text-white leading-none text-center select-none"
               >
-                 SWACHH SAATHI
+                 SWACH SAATHI
               </motion.div>
            </div>
            
