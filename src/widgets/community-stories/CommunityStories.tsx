@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
 
 const SQRT_5000 = Math.sqrt(5000);
@@ -76,65 +76,64 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     <div
       onClick={() => handleMove(position)}
       className={cn(
-        "absolute left-1/2 top-1/2 cursor-pointer border p-8 transition-all duration-700 ease-in-out",
+        "absolute left-1/2 top-1/2 cursor-pointer border-2 p-10 transition-all duration-500 ease-in-out rounded-lg",
         isCenter 
-          ? "z-20 bg-[#111] text-white border-white/10" 
-          : "z-0 bg-white text-black border-slate-200 hover:border-black/20"
+          ? "z-10 bg-primary text-secondary border-primary shadow-2xl" 
+          : "z-0 bg-white text-secondary border-slate-100 hover:border-primary/50 opacity-40 scale-90 blur-[2px]"
       )}
       style={{
         width: cardSize,
-        height: cardSize + 40,
-        clipPath: `polygon(0% 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, 0% 100%)`,
+        height: cardSize,
+        clipPath: `polygon(40px 0%, calc(100% - 40px) 0%, 100% 40px, 100% 100%, calc(100% - 40px) 100%, 40px 100%, 0 100%, 0 0)`,
         transform: `
           translate(-50%, -50%) 
-          translateX(${(cardSize / 1.25) * position}px)
-          translateY(${isCenter ? -65 : Math.abs(position) * 20}px)
-          rotate(${position * 6}deg)
+          translateX(${(cardSize / 1.4) * position}px)
+          translateY(${isCenter ? -40 : position % 2 ? 10 : -10}px)
+          rotate(${isCenter ? 0 : position % 2 ? 3 : -3}deg)
         `,
-        boxShadow: isCenter ? "0px 8px 30px rgba(0,0,0,0.3)" : "0px 4px 10px rgba(0,0,0,0.05)"
       }}
     >
-      <span
-        className={cn(
-            "absolute block origin-top-right rotate-45",
-            isCenter ? "bg-white/20" : "bg-black/10"
-        )}
-        style={{
-          right: -2,
-          top: 48,
-          width: SQRT_5000,
-          height: 1
-        }}
-      />
-      <img
-        src={testimonial.imgSrc}
-        alt={testimonial.by}
-        className={cn(
-            "mb-6 h-14 w-12 object-cover object-top border",
-            isCenter ? "border-white/20" : "border-black/10"
-        )}
-        style={{
-          boxShadow: isCenter ? "3px 3px 0px rgba(255,255,255,0.1)" : "3px 3px 0px rgba(0,0,0,0.05)"
-        }}
-      />
+      <div className={cn(
+        "mb-8 w-10 h-10 flex items-center justify-center rounded-lg",
+        isCenter ? "bg-secondary text-primary" : "bg-primary/20 text-primary"
+      )}>
+        <Quote className="w-5 h-5 fill-current" />
+      </div>
+      
       <h3 className={cn(
-        "text-base sm:text-[19px] font-medium leading-snug tracking-tight",
-        isCenter ? "text-white" : "text-black"
+        "text-xl sm:text-2xl font-bold tracking-tight mb-6 leading-tight",
+        isCenter ? "text-secondary" : "text-secondary"
       )}>
         "{testimonial.testimonial}"
       </h3>
-      <p className={cn(
-        "absolute bottom-8 left-8 right-8 mt-2 text-[11px] italic font-normal",
-        isCenter ? "text-white/60" : "text-black/40"
-      )}>
-        - {testimonial.by}
-      </p>
+      
+      <div className="flex items-center gap-4 mt-auto absolute bottom-10 left-10">
+        <img
+          src={testimonial.imgSrc}
+          alt={testimonial.by}
+          className="h-12 w-12 rounded-full bg-muted object-cover border-2 border-white shadow-sm"
+        />
+        <div>
+           <p className={cn(
+             "font-bold text-sm",
+             isCenter ? "text-secondary" : "text-secondary"
+           )}>
+             {testimonial.by.split(',')[0]}
+           </p>
+           <p className={cn(
+             "text-[10px] uppercase tracking-widest font-bold opacity-60",
+             isCenter ? "text-secondary" : "text-muted-foreground"
+           )}>
+             {testimonial.by.split(',')[1]}
+           </p>
+        </div>
+      </div>
     </div>
   );
 };
 
 export const CommunityStories: React.FC = () => {
-  const [cardSize, setCardSize] = useState(365);
+  const [cardSize, setCardSize] = useState(400);
   const [testimonialsList, setTestimonialsList] = useState(testimonials);
 
   const handleMove = (steps: number) => {
@@ -158,7 +157,7 @@ export const CommunityStories: React.FC = () => {
   useEffect(() => {
     const updateSize = () => {
       const { matches } = window.matchMedia("(min-width: 640px)");
-      setCardSize(matches ? 365 : 290);
+      setCardSize(matches ? 400 : 320);
     };
 
     updateSize();
@@ -167,13 +166,17 @@ export const CommunityStories: React.FC = () => {
   }, []);
 
   return (
-    <section id="community" className="py-48 bg-white overflow-hidden relative">
+    <section id="community" className="py-48 bg-slate-50 overflow-hidden relative">
       <div className="container mx-auto px-12 mb-20 text-center">
-        <h2 className="text-6xl font-bold text-secondary mb-6 tracking-tighter">
+        <div className="flex items-center justify-center gap-3 text-secondary font-bold text-[10px] uppercase tracking-[0.3em] mb-10">
+          <Quote className="w-4 h-4 text-primary" />
+          Community Voices
+        </div>
+        <h2 className="text-6xl font-bold text-secondary mb-12 tracking-tighter">
           People like me.
         </h2>
-        <p className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-          Real stories from citizens who have embraced the zero-waste lifestyle in Gandhinagar.
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          Behavioral adoption increases when you see how your neighbors are making a difference effortlessly.
         </p>
       </div>
 
@@ -182,11 +185,9 @@ export const CommunityStories: React.FC = () => {
         style={{ height: 600 }}
       >
         {testimonialsList.map((testimonial, index) => {
-          const position = index - Math.floor(testimonialsList.length / 2);
-          
-          // Only render nearby cards for better performance and look
-          if (Math.abs(position) > 3) return null;
-
+          const position = testimonialsList.length % 2
+            ? index - (testimonialsList.length + 1) / 2
+            : index - testimonialsList.length / 2;
           return (
             <TestimonialCard
               key={testimonial.tempId}
@@ -198,30 +199,31 @@ export const CommunityStories: React.FC = () => {
           );
         })}
         
-        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-3 z-30">
+        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-4 z-20">
           <button
             onClick={() => handleMove(-1)}
             className={cn(
-              "flex h-14 w-14 items-center justify-center text-secondary transition-all",
-              "bg-white border border-slate-200 hover:bg-black hover:text-white shadow-sm"
+              "flex h-16 w-16 items-center justify-center text-secondary transition-all",
+              "bg-white border-2 border-slate-100 hover:bg-primary hover:border-primary shadow-sm",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             )}
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={() => handleMove(1)}
             className={cn(
-              "flex h-14 w-14 items-center justify-center text-secondary transition-all",
-              "bg-white border border-slate-200 hover:bg-black hover:text-white shadow-sm"
+              "flex h-16 w-16 items-center justify-center text-secondary transition-all",
+              "bg-white border-2 border-slate-100 hover:bg-primary hover:border-primary shadow-sm",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             )}
             aria-label="Next testimonial"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-6 h-6" />
           </button>
         </div>
       </div>
     </section>
   );
 };
-
