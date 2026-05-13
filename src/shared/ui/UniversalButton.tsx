@@ -27,27 +27,26 @@ export const UniversalButton = ({
   const content = (
     <Button 
       className={cn(
-        "group relative flex items-stretch overflow-hidden rounded-none border-none p-0 transition-all duration-500",
-        size === "lg" ? "h-16 lg:h-20" : "h-12 lg:h-14",
+        "group relative flex items-stretch overflow-hidden rounded-full border border-white/10 p-0 transition-all duration-500 shadow-xl",
+        size === "lg" ? "h-14 md:h-16" : "h-10 md:h-12",
         variant === "primary" ? "bg-primary text-secondary" : "bg-secondary text-white",
         className
       )}
     >
       <span className={cn(
-        "flex-1 px-6 flex items-center justify-center h-full font-black uppercase transition-all duration-500 text-center leading-none",
-        size === "lg" ? "text-[10px] md:text-xs lg:text-base tracking-[0.1em] lg:tracking-[0.2em]" : "text-[9px] lg:text-xs tracking-widest",
-        variant === "primary" ? "group-hover:bg-white" : "group-hover:bg-primary group-hover:text-secondary"
+        "flex-1 px-8 md:px-10 flex items-center justify-center h-full font-black uppercase tracking-[0.1em] transition-all duration-500 text-center leading-none",
+        size === "lg" ? "text-[10px] md:text-[11px]" : "text-[9px]",
+        variant === "primary" ? "group-hover:bg-white/10" : "group-hover:bg-primary/10"
       )}>
         {text}
       </span>
       <span className={cn(
-        "flex items-center justify-center h-full transition-all duration-500 flex-shrink-0",
-        size === "lg" ? "w-14 lg:w-20" : "w-10 lg:w-14",
-        variant === "primary" ? "bg-white text-secondary group-hover:bg-primary" : "bg-primary text-secondary group-hover:bg-white"
+        "flex items-center justify-center h-full transition-all duration-500 flex-shrink-0 aspect-square",
+        variant === "primary" ? "bg-white text-black group-hover:bg-primary" : "bg-primary text-secondary group-hover:bg-white"
       )}>
         <Icon className={cn(
-          "transition-transform duration-500 group-hover:translate-x-1",
-          size === "lg" ? "w-5 h-5 lg:w-6" : "w-4 h-4"
+          "transition-transform duration-500 group-hover:rotate-45 group-hover:scale-110",
+          size === "lg" ? "w-4 h-4 md:w-5 md:h-5" : "w-3.5 h-3.5"
         )} />
       </span>
     </Button>
