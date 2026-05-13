@@ -76,55 +76,47 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     <div
       onClick={() => handleMove(position)}
       className={cn(
-        "absolute left-1/2 top-1/2 cursor-pointer border-2 p-10 transition-all duration-500 ease-in-out rounded-lg",
+        "absolute left-1/2 top-1/2 cursor-pointer border p-12 transition-all duration-700 ease-in-out shadow-lg",
         isCenter 
-          ? "z-10 bg-primary text-secondary border-primary shadow-2xl" 
-          : "z-0 bg-white text-secondary border-slate-100 hover:border-primary/50 opacity-20 scale-90"
+          ? "z-10 bg-[#111] text-white border-white/10 scale-100 shadow-2xl" 
+          : "z-0 bg-white text-black border-slate-200 opacity-100 scale-[0.85]"
       )}
       style={{
         width: cardSize,
-        height: cardSize,
-        clipPath: `polygon(40px 0%, calc(100% - 40px) 0%, 100% 40px, 100% 100%, calc(100% - 40px) 100%, 40px 100%, 0 100%, 0 0)`,
+        height: cardSize + 50,
+        clipPath: isCenter 
+          ? `polygon(0% 0%, 85% 0%, 100% 15%, 100% 100%, 0% 100%)`
+          : `none`,
         transform: `
           translate(-50%, -50%) 
-          translateX(${(cardSize * 1.1) * position}px)
-          translateY(${isCenter ? -40 : position % 2 ? 10 : -10}px)
-          rotate(${isCenter ? 0 : position % 2 ? 3 : -3}deg)
+          translateX(${cardSize * 0.85 * position}px)
+          translateY(${isCenter ? -30 : Math.abs(position) * 20}px)
+          rotate(${position * 6}deg)
         `,
       }}
     >
-      <div className={cn(
-        "mb-8 w-10 h-10 flex items-center justify-center rounded-lg",
-        isCenter ? "bg-secondary text-primary" : "bg-primary/20 text-primary"
-      )}>
-        <Quote className="w-5 h-5 fill-current" />
-      </div>
-      
-      <h3 className={cn(
-        "text-xl sm:text-2xl font-bold tracking-tight mb-6 leading-tight",
-        isCenter ? "text-secondary" : "text-secondary"
-      )}>
-        "{testimonial.testimonial}"
-      </h3>
-      
-      <div className="flex items-center gap-4 mt-auto absolute bottom-10 left-10">
-        <img
-          src={testimonial.imgSrc}
-          alt={testimonial.by}
-          className="h-12 w-12 rounded-full bg-muted object-cover border-2 border-white shadow-sm"
-        />
-        <div>
+      <div className="flex flex-col h-full relative">
+        <div className="mb-8 shrink-0">
+           <img
+             src={testimonial.imgSrc}
+             alt={testimonial.by}
+             className="h-14 w-14 rounded-none bg-slate-100 object-cover border border-white/10 grayscale contrast-125"
+           />
+        </div>
+        
+        <h3 className={cn(
+          "text-xl sm:text-[22px] font-medium tracking-tight mb-12 leading-snug",
+          isCenter ? "text-white" : "text-black"
+        )}>
+          "{testimonial.testimonial}"
+        </h3>
+        
+        <div className="mt-auto">
            <p className={cn(
-             "font-bold text-sm",
-             isCenter ? "text-secondary" : "text-secondary"
+             "text-[12px] font-normal italic opacity-60",
+             isCenter ? "text-white/80" : "text-black/60"
            )}>
-             {testimonial.by.split(',')[0]}
-           </p>
-           <p className={cn(
-             "text-[10px] uppercase tracking-widest font-bold opacity-60",
-             isCenter ? "text-secondary" : "text-muted-foreground"
-           )}>
-             {testimonial.by.split(',')[1]}
+             - {testimonial.by}
            </p>
         </div>
       </div>
