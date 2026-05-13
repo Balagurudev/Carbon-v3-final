@@ -38,7 +38,7 @@ export const Navbar = ({ theme = 'dark' }: { theme?: 'dark' | 'light' }) => {
 
       {/* Menu - Centered Pill */}
       <div className={cn(
-        "hidden lg:flex items-center gap-1 backdrop-blur-xl rounded-full p-1.5 border transition-all duration-500 shadow-2xl",
+        "hidden lg:flex items-center gap-0.5 backdrop-blur-xl rounded-full p-1 border transition-all duration-500 shadow-2xl",
         isLight ? "bg-secondary/5 border-secondary/10" : "bg-white/5 border-white/10"
       )}>
         {[
@@ -48,17 +48,17 @@ export const Navbar = ({ theme = 'dark' }: { theme?: 'dark' | 'light' }) => {
         ].map((item) => (
           <Link key={item.name} href={item.href}>
             <button className={cn(
-              "px-6 py-2.5 text-[10px] font-black flex items-center gap-2 rounded-full transition-all uppercase tracking-[0.2em]",
+              "px-4 py-2 text-[9px] font-black flex items-center gap-2 rounded-full transition-all uppercase tracking-[0.1em]",
               isLight ? "text-secondary/70 hover:text-secondary hover:bg-secondary/10" : "text-white/70 hover:text-white hover:bg-white/10"
             )}>
               {item.name}
             </button>
           </Link>
         ))}
-        <div className={cn("w-[1px] h-4 mx-2", isLight ? "bg-secondary/10" : "bg-white/10")} />
+        <div className={cn("w-[1px] h-3 mx-1.5", isLight ? "bg-secondary/10" : "bg-white/10")} />
         <Link href="/join">
           <button className={cn(
-            "px-6 py-2.5 text-[10px] font-black rounded-full transition-all uppercase tracking-[0.2em]",
+            "px-4 py-2 text-[9px] font-black rounded-full transition-all uppercase tracking-[0.1em]",
             isLight ? "text-secondary/70 hover:text-secondary hover:bg-secondary/10" : "text-white/70 hover:text-white hover:bg-white/10"
           )}>
             Contact Us

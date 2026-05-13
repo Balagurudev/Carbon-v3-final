@@ -15,28 +15,26 @@ export const Hero = () => {
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/hero-bg.png')" }}
       >
-        {/* Main Vignette and Darkening */}
-        <div className="absolute inset-0 bg-black/50 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40 z-20" />
+        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-black via-black/20 to-transparent z-20" />
       </div>
 
 
-      <div className="container mx-auto px-12 relative z-30">
+      <div className="container mx-auto px-6 md:px-12 relative z-30">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl"
+          className="max-w-5xl"
         >
-          <h1 className="text-[100px] xl:text-[140px] font-bold text-white leading-[0.85] mb-12 tracking-tighter">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-[120px] font-bold text-white leading-[0.9] mb-8 tracking-tighter">
             Gandhinagar is <br />
             going Zero Waste. <br />
             <span className="text-primary italic">Are you in?</span>
           </h1>
           
-          <div className="max-w-xl">
-            <p className="text-xl md:text-2xl text-white/80 mb-12 leading-tight font-medium">
+          <div className="max-w-2xl">
+            <p className="text-lg md:text-xl text-white/60 mb-10 leading-relaxed font-medium">
               Join the Clean Circle and get free doorstep waste collection across your neighborhood. Building a sustainable city for future generations.
             </p>
   
