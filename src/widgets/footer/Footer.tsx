@@ -20,7 +20,7 @@ export const Footer = () => {
               <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center transition-transform group-hover:rotate-12">
                 <div className="w-5 h-5 bg-secondary rounded-sm rotate-45" />
               </div>
-              <span className="text-3xl font-black text-white tracking-tighter uppercase">Verden</span>
+              <span className="text-3xl font-black text-white tracking-tighter uppercase">Swachh Saathi</span>
             </div>
             <p className="text-white/40 text-[11px] font-bold uppercase tracking-[0.2em] leading-loose max-w-xs mb-10">
               Transforming Gandhinagar into a model zero-waste city through community-led sustainability and technology.
@@ -72,7 +72,7 @@ export const Footer = () => {
                 transition={{ duration: 1.5 }}
                 className="text-[12vw] font-black tracking-tighter text-white leading-none text-center select-none"
               >
-                 CLEAN CIRCLE
+                 SWACHH SAATHI
               </motion.div>
            </div>
            

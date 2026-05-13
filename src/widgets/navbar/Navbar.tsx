@@ -33,7 +33,7 @@ export const Navbar = ({ theme = 'dark' }: { theme?: 'dark' | 'light' }) => {
         <span className={cn(
           "text-2xl font-black tracking-tighter uppercase transition-colors duration-500",
           isLight ? "text-secondary" : "text-white"
-        )}>Verden</span>
+        )}>Swachh Saathi</span>
       </div>
 
       {/* Menu - Centered Pill */}

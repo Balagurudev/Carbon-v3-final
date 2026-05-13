@@ -8,8 +8,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Clean Circle - Gandhinagar",
-  description: "Gandhinagar is going Zero Waste. Join the Clean Circle and get free doorstep waste collection.",
+  title: "Swachh Saathi - Gandhinagar",
+  description: "Gandhinagar is going Zero Waste. Join Swachh Saathi and get free doorstep waste collection.",
 };
 
 export default function RootLayout({
