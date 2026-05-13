@@ -114,15 +114,6 @@ export const Hero = () => {
          </motion.div>
       </div>
 
-      {/* Subtle Progress Indicator */}
-      <div className="absolute bottom-0 left-0 w-full h-1.5 bg-white/5 overflow-hidden">
-         <motion.div 
-           initial={{ x: "-100%" }}
-           animate={{ x: "0%" }}
-           transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-           className="h-full bg-primary w-1/4 opacity-50" 
-         />
-      </div>
     </section>
   )
 }
