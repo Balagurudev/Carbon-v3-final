@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
 
 const SQRT_5000 = Math.sqrt(5000);
@@ -76,56 +76,65 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     <div
       onClick={() => handleMove(position)}
       className={cn(
-        "absolute left-1/2 top-1/2 cursor-pointer border p-12 transition-all duration-700 ease-in-out shadow-lg",
+        "absolute left-1/2 top-1/2 cursor-pointer border p-8 transition-all duration-700 ease-in-out",
         isCenter 
-          ? "z-10 bg-[#111] text-white border-white/10 scale-100 shadow-2xl" 
-          : "z-0 bg-white text-black border-slate-200 opacity-100 scale-[0.85]"
+          ? "z-20 bg-[#111] text-white border-white/10" 
+          : "z-0 bg-white text-black border-slate-200 hover:border-black/20"
       )}
       style={{
         width: cardSize,
-        height: cardSize + 50,
-        clipPath: isCenter 
-          ? `polygon(0% 0%, 85% 0%, 100% 15%, 100% 100%, 0% 100%)`
-          : `none`,
+        height: cardSize + 40,
+        clipPath: `polygon(0% 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, 0% 100%)`,
         transform: `
           translate(-50%, -50%) 
-          translateX(${cardSize * 0.85 * position}px)
-          translateY(${isCenter ? -30 : Math.abs(position) * 20}px)
+          translateX(${(cardSize / 1.25) * position}px)
+          translateY(${isCenter ? -65 : Math.abs(position) * 20}px)
           rotate(${position * 6}deg)
         `,
+        boxShadow: isCenter ? "0px 8px 30px rgba(0,0,0,0.3)" : "0px 4px 10px rgba(0,0,0,0.05)"
       }}
     >
-      <div className="flex flex-col h-full relative">
-        <div className="mb-8 shrink-0">
-           <img
-             src={testimonial.imgSrc}
-             alt={testimonial.by}
-             className="h-14 w-14 rounded-none bg-slate-100 object-cover border border-white/10 grayscale contrast-125"
-           />
-        </div>
-        
-        <h3 className={cn(
-          "text-xl sm:text-[22px] font-medium tracking-tight mb-12 leading-snug",
-          isCenter ? "text-white" : "text-black"
-        )}>
-          "{testimonial.testimonial}"
-        </h3>
-        
-        <div className="mt-auto">
-           <p className={cn(
-             "text-[12px] font-normal italic opacity-60",
-             isCenter ? "text-white/80" : "text-black/60"
-           )}>
-             - {testimonial.by}
-           </p>
-        </div>
-      </div>
+      <span
+        className={cn(
+            "absolute block origin-top-right rotate-45",
+            isCenter ? "bg-white/20" : "bg-black/10"
+        )}
+        style={{
+          right: -2,
+          top: 48,
+          width: SQRT_5000,
+          height: 1
+        }}
+      />
+      <img
+        src={testimonial.imgSrc}
+        alt={testimonial.by}
+        className={cn(
+            "mb-6 h-14 w-12 object-cover object-top border",
+            isCenter ? "border-white/20" : "border-black/10"
+        )}
+        style={{
+          boxShadow: isCenter ? "3px 3px 0px rgba(255,255,255,0.1)" : "3px 3px 0px rgba(0,0,0,0.05)"
+        }}
+      />
+      <h3 className={cn(
+        "text-base sm:text-[19px] font-medium leading-snug tracking-tight",
+        isCenter ? "text-white" : "text-black"
+      )}>
+        "{testimonial.testimonial}"
+      </h3>
+      <p className={cn(
+        "absolute bottom-8 left-8 right-8 mt-2 text-[11px] italic font-normal",
+        isCenter ? "text-white/60" : "text-black/40"
+      )}>
+        - {testimonial.by}
+      </p>
     </div>
   );
 };
 
 export const CommunityStories: React.FC = () => {
-  const [cardSize, setCardSize] = useState(400);
+  const [cardSize, setCardSize] = useState(365);
   const [testimonialsList, setTestimonialsList] = useState(testimonials);
 
   const handleMove = (steps: number) => {
@@ -149,7 +158,7 @@ export const CommunityStories: React.FC = () => {
   useEffect(() => {
     const updateSize = () => {
       const { matches } = window.matchMedia("(min-width: 640px)");
-      setCardSize(matches ? 400 : 320);
+      setCardSize(matches ? 365 : 290);
     };
 
     updateSize();
@@ -158,17 +167,13 @@ export const CommunityStories: React.FC = () => {
   }, []);
 
   return (
-    <section id="community" className="py-48 bg-slate-50 overflow-hidden relative">
+    <section id="community" className="py-48 bg-white overflow-hidden relative">
       <div className="container mx-auto px-12 mb-20 text-center">
-        <div className="flex items-center justify-center gap-3 text-secondary font-bold text-[10px] uppercase tracking-[0.3em] mb-10">
-          <Quote className="w-4 h-4 text-primary" />
-          Community Voices
-        </div>
-        <h2 className="text-6xl font-bold text-secondary mb-12 tracking-tighter">
+        <h2 className="text-6xl font-bold text-secondary mb-6 tracking-tighter">
           People like me.
         </h2>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          Behavioral adoption increases when you see how your neighbors are making a difference effortlessly.
+        <p className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          Real stories from citizens who have embraced the zero-waste lifestyle in Gandhinagar.
         </p>
       </div>
 
@@ -179,8 +184,8 @@ export const CommunityStories: React.FC = () => {
         {testimonialsList.map((testimonial, index) => {
           const position = index - Math.floor(testimonialsList.length / 2);
           
-          // Only render cards close to the center to avoid clutter
-          if (Math.abs(position) > 2) return null;
+          // Only render nearby cards for better performance and look
+          if (Math.abs(position) > 3) return null;
 
           return (
             <TestimonialCard
@@ -193,31 +198,30 @@ export const CommunityStories: React.FC = () => {
           );
         })}
         
-        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-4 z-20">
+        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-3 z-30">
           <button
             onClick={() => handleMove(-1)}
             className={cn(
-              "flex h-16 w-16 items-center justify-center text-secondary transition-all",
-              "bg-white border-2 border-slate-100 hover:bg-primary hover:border-primary shadow-sm",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              "flex h-14 w-14 items-center justify-center text-secondary transition-all",
+              "bg-white border border-slate-200 hover:bg-black hover:text-white shadow-sm"
             )}
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={() => handleMove(1)}
             className={cn(
-              "flex h-16 w-16 items-center justify-center text-secondary transition-all",
-              "bg-white border-2 border-slate-100 hover:bg-primary hover:border-primary shadow-sm",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              "flex h-14 w-14 items-center justify-center text-secondary transition-all",
+              "bg-white border border-slate-200 hover:bg-black hover:text-white shadow-sm"
             )}
             aria-label="Next testimonial"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5" />
           </button>
         </div>
       </div>
     </section>
   );
 };
+
