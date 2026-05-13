@@ -79,7 +79,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         "absolute left-1/2 top-1/2 cursor-pointer border-2 p-10 transition-all duration-500 ease-in-out rounded-lg",
         isCenter 
           ? "z-10 bg-primary text-secondary border-primary shadow-2xl" 
-          : "z-0 bg-white text-secondary border-slate-100 hover:border-primary/50 opacity-40 scale-90"
+          : "z-0 bg-white text-secondary border-slate-100 hover:border-primary/50 opacity-20 scale-90"
       )}
       style={{
         width: cardSize,
@@ -87,7 +87,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         clipPath: `polygon(40px 0%, calc(100% - 40px) 0%, 100% 40px, 100% 100%, calc(100% - 40px) 100%, 40px 100%, 0 100%, 0 0)`,
         transform: `
           translate(-50%, -50%) 
-          translateX(${(cardSize / 1.4) * position}px)
+          translateX(${(cardSize * 1.1) * position}px)
           translateY(${isCenter ? -40 : position % 2 ? 10 : -10}px)
           rotate(${isCenter ? 0 : position % 2 ? 3 : -3}deg)
         `,
@@ -185,9 +185,11 @@ export const CommunityStories: React.FC = () => {
         style={{ height: 600 }}
       >
         {testimonialsList.map((testimonial, index) => {
-          const position = testimonialsList.length % 2
-            ? index - (testimonialsList.length + 1) / 2
-            : index - testimonialsList.length / 2;
+          const position = index - Math.floor(testimonialsList.length / 2);
+          
+          // Only render cards close to the center to avoid clutter
+          if (Math.abs(position) > 2) return null;
+
           return (
             <TestimonialCard
               key={testimonial.tempId}
